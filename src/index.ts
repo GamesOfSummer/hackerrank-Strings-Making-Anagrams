@@ -29,11 +29,10 @@ function makeAnagram(a: string, b: string): number {
 
     let duplicateSet = new Set();
 
-    let counter = 0;
     for (let i = 0; i < aSet.size; i++) {
-        if (!bSet.has(aSet[i])) {
-            counter++;
-            let holderz = Array.from(aSet)[i];
+        let holderz = Array.from(aSet)[i];
+
+        if (!bSet.has(holderz)) {
             duplicateSet.add(holderz);
         }
     }
@@ -41,10 +40,41 @@ function makeAnagram(a: string, b: string): number {
     const holder3 = duplicateSet;
 
     for (let i = 0; i < bSet.size; i++) {
-        if (!aSet.has(bSet[i])) {
-            counter++;
-            let holderz = Array.from(bSet)[i];
+        let holderz = Array.from(bSet)[i];
+
+        if (!aSet.has(holderz)) {
             duplicateSet.add(holderz);
+        }
+    }
+
+    for (let i = 0; i < aSet.size; i++) {
+        let holderz = Array.from(aSet)[i];
+
+        if (!bSet.has(holderz)) {
+            duplicateSet.add(holderz);
+        }
+    }
+
+    //***************** */
+
+    //***************** */
+
+    //***************** */
+
+    let counter = 0;
+    for (let i = 0; i < aSet.size; i++) {
+        let holderz = Array.from(aSet)[i];
+
+        if (!duplicateSet.has(holderz)) {
+            counter++;
+        }
+    }
+
+    for (let i = 0; i < bSet.size; i++) {
+        let holderz = Array.from(bSet)[i];
+
+        if (!duplicateSet.has(holderz)) {
+            counter++;
         }
     }
 
@@ -53,12 +83,12 @@ function makeAnagram(a: string, b: string): number {
 
 consoleStart();
 
-validateFxn(makeAnagram('showman', 'woman'), 2);
-
 validateFxn(
     makeAnagram('fcrxzwscanmligyxyvym', 'jxwtrhvujlmrpdoqbisbwhmgpmeoke'),
     30
 );
+
+validateFxn(makeAnagram('showman', 'woman'), 2);
 
 validateFxn(makeAnagram('cde', 'abc'), 4);
 validateFxn(makeAnagram('cdeee', 'abc'), 4);
