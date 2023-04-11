@@ -33,16 +33,18 @@ function makeAnagram(a: string, b: string): number {
     for (let i = 0; i < aSet.size; i++) {
         if (!bSet.has(aSet[i])) {
             counter++;
-            duplicateSet.add(aSet[i]);
+            let holderz = Array.from(aSet)[i];
+            duplicateSet.add(holderz);
         }
     }
 
     const holder3 = duplicateSet;
 
     for (let i = 0; i < bSet.size; i++) {
-        if (!aSet.has(bSet[i]) && !duplicateSet.has(bSet[i])) {
+        if (!aSet.has(bSet[i])) {
             counter++;
-            duplicateSet.add(bSet[i]);
+            let holderz = Array.from(bSet)[i];
+            duplicateSet.add(holderz);
         }
     }
 
@@ -50,6 +52,8 @@ function makeAnagram(a: string, b: string): number {
 }
 
 consoleStart();
+
+validateFxn(makeAnagram('showman', 'woman'), 2);
 
 validateFxn(
     makeAnagram('fcrxzwscanmligyxyvym', 'jxwtrhvujlmrpdoqbisbwhmgpmeoke'),
